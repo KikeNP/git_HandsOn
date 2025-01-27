@@ -1,5 +1,4 @@
-!/usr/bin/env python
-
+#!/usr/bin/env python
 import sys, re
 from argparse import ArgumentParser
 
@@ -13,14 +12,6 @@ if len(sys.argv) == 1:
 
 args = parser.parse_args()
 
-if args.motif:
-    args.motif = args.motif.upper()
-    print(f'Motif search enabled: looking for motif "{args.motif}" in sequence "{args.seq}"... ', end = '')
-    if re.search(args.motif, args.seq):
-        print("FOUND")
-    else:
-        print("NOT FOUND")
-
 if re.search('^[ACGTU]+$', args.seq):
     if re.search('T', args.seq):
         print ('The sequence is DNA')
@@ -30,3 +21,11 @@ if re.search('^[ACGTU]+$', args.seq):
         print ('The sequence can be DNA or RNA')
 else:
     print ('The sequence is not genetic')
+
+if args.motif:
+    args.motif = args.motif.upper()
+    print(f'Motif search enabled: looking for motif "{args.motif}" in sequence "{args.seq}"... ', end = '')
+    if re.search(args.motif, args.seq):
+        print("FOUND")
+    else:
+        print("NOT FOUND")
